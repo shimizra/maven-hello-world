@@ -1,4 +1,4 @@
-name: Bump Patch Version
+name: simple pipieline
 
 on:
   workflow_dispatch:

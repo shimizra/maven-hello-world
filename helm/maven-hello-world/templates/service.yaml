@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "maven-hello-world.fullname" . }}
+  labels:
+    app: {{ include "maven-hello-world.name" . }}
+    chart: {{ include "maven-hello-world.chart" . }}
+    release: {{ .Release.Name }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  - port: {{ .Values.service.port }}
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: {{ include "maven-hello-world.name" . }}
+    release: {{ .Release.Name }}
